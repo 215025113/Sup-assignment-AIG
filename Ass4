@@ -1,0 +1,93 @@
+
+function userInput()
+end
+print("Enter NO of Tables in the world?\n")
+x=readline()
+table=parse(Int64, x)
+global tc= Array{String}(undef, table)
+for i=1:table
+
+print("Enter table name ",i,"?\n")
+tc[i]=readline()
+
+end
+
+print("Enter number of blocks in the world?\n")
+sb=readline()
+sc=parse(Int64, sb)
+global blockCol = Array{String}(undef, sc)
+
+blok=[]
+box=[]
+table=[]
+tp=0
+ap=0
+bp=0
+for i=1:sc
+print("What is the name of the block ",i,"?\n")
+b=readline()
+if b=="A"
+    global ap=1
+elseif b=="B"
+    global bp=1
+end
+push!(blok,b)
+push!(table,[])
+end
+
+blength=length(blok)
+for i=1:blength
+print("This block ",blok[i],"?\n1.In the box\n2.On the table\n")
+r=readline()
+rn=parse(Int64, r)
+if rn==1
+    if isequal(tp,0)
+        push!(table[1],blok[i])
+        global tp += 1
+    elseif tp>0
+print("\nDo you wish to put blocks directly on the table?\n1.Yes\n2.No\n")
+ts=readline()
+ms=parse(Int64, ts)
+if ms==1
+    ad=length(table)
+    while ad>0
+        if length(table[ad])==0
+            push!(table[ad],blok[i])
+            ad=0
+        end
+        ad=ad-1
+    end
+        elseif p==2
+            u=length(table)
+            while y>0
+                if length(table[u])>0
+
+print("\nDo you wish to put block ",blok[i]," onto block ",table[u][length(table[u])],"?\n1.Yes\n2.No\n")
+s=readline()
+k=parse(Int64, s)
+if k==1
+    push!(table[u],blok[i])
+    u=0
+end
+end
+u=u-1
+end
+end
+global tp += 1
+end
+elseif cn==2
+    global bp+=1
+push!(box,blok[i])
+end
+end
+
+println("Current Configuration of the Blocks is:")
+
+for i=1:sc
+    println(blok[i])
+end
+
+println("Goal state is:")
+#goalState = sort!(blockCol)
+
+    #print(goalState)
